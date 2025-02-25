@@ -139,9 +139,19 @@ function createNextTopCommentButton() {
 // process all comments
 document.querySelectorAll('.comtr').forEach(createPreview);
 
-// Add scroll buttons
-createScrollToTopButton();
-createNextTopCommentButton();
+// Only add navigation buttons on comment pages
+function isCommentsPage() {
+  // Comments pages have URLs containing "item?id=" or are on the "threads" or "newcomments" pages
+  return window.location.href.includes('item?id=') || 
+         window.location.href.includes('/threads') ||
+         window.location.href.includes('/newcomments');
+}
+
+// Add scroll buttons only on comments pages
+if (isCommentsPage()) {
+  createScrollToTopButton();
+  createNextTopCommentButton();
+}
 
 // handle dynamically loaded comments
 const observer = new MutationObserver(mutations => {
