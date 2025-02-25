@@ -1,0 +1,12 @@
+{
+    "manifest_version": 3,
+    "name": "Better HN Comments",
+    "version": "1.0",
+    "description": "Adds parent/grandparent preview to HN comments, as well as scroll to top and scroll to next top level comment options.",
+    "permissions": ["activeTab"],
+    "content_scripts": [{
+      "matches": ["*://news.ycombinator.com/*"],
+      "css": ["styles.css"],
+      "js": ["content.js"]
+    }]
+  }
